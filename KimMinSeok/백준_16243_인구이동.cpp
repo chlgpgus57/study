@@ -13,6 +13,7 @@ int dy[] = { 0,0,1,-1 };
 int ans;
 
 void input() {
+	cout<<123;
 	cin >> n >> l >> r;
 	for (int i = 0; i < n; i++)
 	{
