@@ -11,7 +11,9 @@ public class Baekjoon2529_부등호_DFS {
 		if(c=='<') {
 			if(a>b) {
 				return false;
-			}else if(c=='>') {
+			}
+		}else if(c=='>') {
+			if(a<b) {
 				return false;
 			}
 		}
@@ -28,9 +30,13 @@ public class Baekjoon2529_부등호_DFS {
 		
 		for(int i=0; i<=9; i++) {
 			
-			if(!vi[i]) {
+			
+			if(vi[i]) {
+				continue;
+			}
+			if(cnt==0||	check(Character.getNumericValue(num.charAt(cnt-1)), i, map[cnt-1]) ){
 				vi[i]=true;
-				dfs(cnt+1, st);
+				dfs(cnt+1, st+i);
 				vi[i]=false;
 			}
 			
@@ -66,7 +72,7 @@ public class Baekjoon2529_부등호_DFS {
 		dfs(0, "");
 		Collections.sort(ar);
 		
-		
+		System.out.println(ar.get(0));
 		
 		System.out.print(ar.get(ar.size()-1));
 		System.out.println(ar.get(0));
