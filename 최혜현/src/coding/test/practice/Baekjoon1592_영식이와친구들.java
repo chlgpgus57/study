@@ -9,16 +9,12 @@ import java.util.StringTokenizer;
 public class Baekjoon1592_영식이와친구들 {
 
 	static int [] map;
-	static int n;
-	static int m;
-	static int l;
-	static int ans=0;
+	static int n,m,l;
 	
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		n = Integer.parseInt(st.nextToken());
@@ -26,34 +22,37 @@ public class Baekjoon1592_영식이와친구들 {
 		l = Integer.parseInt(st.nextToken());//몇번째로 던질지
 		
 		map = new int [n+1];
-		int index=0;
+		int ans=0;
+		
+		map[1]=1;
+		int index=1;
  		
+		
+		
 		while(true) {
 			
-			   map[index]++;
 				
-				if(map[index]==m) {
-					break;
-				}
+			if(map[index]==m) {
+				break;
+			}
 				
-				if(map[index]%2==1) {//홀수
+			if(map[index]%2==1) {//홀수
 					
-					if(index-l<0) {
-						index = n-l+index;
-					}else {
-						index = index-l;
-					}
-					
-				}else if(map[index]%2==0) {//짝수
-					
-					if(index+l>=m) {
-						index = l-n+index;
-					}else {
-						index = index +l;
-					}
-				}
+				index = index +l;
 				
-				ans++;
+			}else if(map[index]%2==0) {//짝수
+					
+				index = index -l;
+			}
+			
+			if(index>n) {
+				index %= n;
+			}else if(index<1) {
+				index+=n;
+			}
+				
+			map[index]++;
+			ans++;
 				
 		}
 		
